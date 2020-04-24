@@ -13,6 +13,8 @@ Vue.config.productionTip = false
 Vue.use(elementUI)
 // 全局使用ajax请求工具
 Vue.use(VueResource)
+// 非生产环境下才使用mock,因此只能require
+if (process.env.NODE_ENV !== 'production') require('./mock')
 
 new Vue({
   router,
