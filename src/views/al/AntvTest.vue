@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div>
+      <el-button type="primary" @click="change">切换</el-button>
+    </div>
     <div id="mountNode"></div>
     <div id="container" style="width: 800px;height: 600px"></div>
   </div>
@@ -11,6 +14,12 @@
 
   export default {
     name: 'AntvTest',
+
+    data () {
+      return {
+        param: 1
+      }
+    },
 
     mounted () {
       this.init(1)
@@ -31,29 +40,7 @@
       },
 
       antv1 () {
-        const param = {
-          // 点集
-          nodes: [
-            {
-              id: 'node1', // String，该节点存在则必须，节点的唯一标识
-              x: 100, // Number，可选，节点位置的 x 值
-              y: 200, // Number，可选，节点位置的 y 值
-            },
-            {
-              id: 'node2', // String，该节点存在则必须，节点的唯一标识
-              x: 300, // Number，可选，节点位置的 x 值
-              y: 200, // Number，可选，节点位置的 y 值
-            },
-          ],
-          // 边集
-          edges: [
-            {
-              source: 'node1', // String，必须，起始点 id
-              target: 'node2', // String，必须，目标点 id
-            },
-          ],
-        }
-        this.$http.get(api.a).then(res => {
+        this.http.get(api.a).then(res => {
           const graph = new G6.Graph({
             container: 'mountNode', // String | HTMLElement，必须，在 Step 1 中创建的容器 id 或容器本身
             width: 800, // Number，必须，图的宽度
@@ -62,13 +49,10 @@
           graph.data(res.data) // 读取 Step 2 中的数据源到图上
           graph.render() // 渲染图
         })
-
       },
 
       antv2 () {
-        fetch('https://gw.alipayobjects.com/os/antvdemo/assets/data/algorithm-category.json')
-          .then(res => res.json())
-          .then(data => {
+        this.http.get(api.b).then(data => {
             const div = document.getElementById('container')
             const width = div.scrollWidth
             const height = div.scrollHeight || 500
@@ -151,12 +135,26 @@
               }
             })
 
-            graph.data(data)
+            graph.data(data.data)
             graph.render()
             graph.fitView()
           })
-      }
+      },
+
+      change () {
+        if (this.param === 1) {
+          this.param = 2
+        } else {
+          this.param = 1
+        }
+      },
     },
+
+    watch:{
+      'param':function (v) {
+        this.init(v);
+      }
+    }
 
   }
 </script>

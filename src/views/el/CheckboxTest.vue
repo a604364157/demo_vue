@@ -9,7 +9,7 @@
     <el-row>
       <!--多选框组-->
       <el-checkbox-group v-model="boxList1">
-        <el-checkbox label="a">备选项</el-checkbox>
+        <el-checkbox label="testA">备选项</el-checkbox>
         <el-checkbox label="b">备选项</el-checkbox>
         <el-checkbox label="c">备选项</el-checkbox>
         <el-checkbox label="d" disabled>备选项</el-checkbox>

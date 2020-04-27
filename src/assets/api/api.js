@@ -1,5 +1,6 @@
 const api = {
-  a:'a.json'
+  a: 'a',
+  b: 'b'
 }
 
 export default api
