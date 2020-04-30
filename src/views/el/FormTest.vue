@@ -49,7 +49,8 @@
         <el-link href="/input" target="_self" type="success">文本框</el-link>
         <el-link href="/radio" target="_self">单选框</el-link>
         <el-link href="/checkbox" target="_self" type="primary">复选框</el-link>
-        <el-link href="/antv" target="_self" type="primary">阿里脑图</el-link>
+        <el-link href="/antv/g6" target="_self" type="primary">G6</el-link>
+        <el-link href="/antv/g2" target="_self" type="primary">G2</el-link>
       </el-form-item>
     </el-form>
   </div>

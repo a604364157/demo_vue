@@ -38,9 +38,14 @@ const routes = [
     component: () => import('../views/el/CheckboxTest.vue')
   },
   {
-    path: '/antv',
-    name: 'Antv',
-    component: () => import('../views/al/AntvTest.vue')
+    path: '/antv/g6',
+    name: 'AntvG6',
+    component: () => import('../views/al/g6/AntvG6Test.vue')
+  },
+  {
+    path: '/antv/g2',
+    name: 'AntvG2',
+    component: () => import('../views/al/g2/AntvG2Test.vue')
   }
 ]
 
